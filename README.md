@@ -5,7 +5,7 @@ Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://
 
 - Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
 - Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
+- Includes a static blog ( uses Markdown )
 - Responsive for different devices
 - Optimized for Next.js and Vercel
 
@@ -35,7 +35,7 @@ Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://
    pnpm dev
    ```
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+5. To setup your personal data, open the [Config file](./src/data/resume.tsx) and make changes
 
 # License
 
