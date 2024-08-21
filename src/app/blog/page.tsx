@@ -3,7 +3,7 @@ import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Blog",
+  title: "Keiru Blog",
   description: "My thoughts on software development, life, and more.",
 };
 
@@ -15,7 +15,7 @@ export default async function BlogPage() {
   return (
     <section>
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
+        <h1 className="font-medium text-4xl mb-8 tracking-tighter">Keiru's Blog</h1>
       </BlurFade>
       {posts
         .sort((a, b) => {
@@ -32,10 +32,11 @@ export default async function BlogPage() {
               className="flex flex-col space-y-1 mb-4"
               href={`/blog/${post.slug}`}
             >
-              <div className="w-full flex flex-col">
-                <p className="tracking-tight">{post.metadata.title}</p>
+              <div className="w-full flex flex-col justify-end hover:dark:bg-gray-800 hover:bg-gray-300 p-10 transition-colors ">
+                <p className="tracking-tight text-xl font-bold">{post.metadata.title}</p>
+                <p className="text-base text-md font-mono">{post.metadata.summary}</p>
                 <p className="h-6 text-xs text-muted-foreground">
-                  {post.metadata.publishedAt}
+                  {post.metadata.publishedAt} 
                 </p>
               </div>
             </Link>
