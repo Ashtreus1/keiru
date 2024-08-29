@@ -1,0 +1,93 @@
+---
+title: "How to use Symlinks in Create React App"
+publishedAt: "2024-08-30"
+summary: "Using Symlinks to access files outside the 'src' directory in Create React App"
+---
+
+
+# Using Symlinks to access files outside the 'src' directory in Create React App
+
+
+When working with a Create React App (CRA) project, it's common to keep all your code within the 'src' directory. However, there are times when you might want to organize your project differently, such as placing utility functions or helpers outside of **'src'**. By default, CRA doesn't allow importing files from outside 'src', but you can work around this by creating a **symlink**. This blog post will guide you through the steps to set up a symlink in your project.  
+
+---
+## Why use Symlinks?
+
+Symlinks (Symbolic links) are essentially shortcuts that point to another directory or file on your system. By creating a symlink in the **'node_modules'** directory, you can make your external directory appear as though it's part of your project's modules, allowing you to import files from it seamlessly.
+
+## Setting up a Symlink in CRA
+
+Let's say you have a project structure like this:
+```
+	my-project/
+	├── README.md
+	├── config-overrides.js
+	├── helpers/
+	│   └── formatTime.js
+	├── package-lock.json
+	├── package.json
+	├── public/
+	│   └── index.html
+	└── src/
+	    ├── App.jsx
+	    └── index.js
+```
+In this example, the **'helpers'** directory is outside **'src'**, and you want to import **'formatTime.js'** into your React components.
+
+### Step 1: Create the Symlink
+
+Open your terminal and navigate to your project root directory. Run the following command:
+
+```bash
+ln -s $(pwd)/helpers $(pwd)/node_modules/helpers
+```
+- **'$(pwd)/helpers'** dynamically resolves the absolute path tot the **'helpers'** directory based on your current working directory.
+- **'$(pwd)/node_modules/helpers'** creates the symlink in the **'node_modules'** directory.
+
+### Step 2: Verify the Symlink
+
+After running the command, check your **'node_modules'** directory. You should see a **'helpers'** folder that is actually a link to the external **'helpers'** directory.  
+
+To verify, you can list the files:
+```bash
+cd node_modules
+ls -l | grep helpers
+```
+
+You should see something like:
+```
+	helpers -> /your/project/path/helpers
+```
+
+### Step 3: Import the helpers in your code
+
+Now that the symlink is set up, you can import your helper functions as if they were inside **'node_modules'**:
+
+```javascript
+import { formatTime } from 'helpers/formatTime';
+```
+
+This works because Webpack, which CRA uses under the hood, resolves modules in **'node_modules'** by default.
+
+### Step 4: Restart your development server
+
+Finally, make sure to restart your development server to apply the changes:
+```bash
+npm start
+```
+
+**Considerations**
+- **Cross-Platform Compatibility**: On Windows, you might need to use the **'mklink'** command instead of **'ln -s'**.
+- **Ejecting CRA**: If you need more advanced configuration or the symlink approach doesn't suit your needs, consider ejecting CRA to modify Webpack directly. However, this is a more complex and less maintainable solution.
+
+## Why not just move the helpers to 'src'?
+
+While moving your **'helpers'** directory inside **'src'** is a simpler solution, there are cases where you might want to keep certain code outside **'src'** for organizational reasons. Symlinks offer a flexible solution without restructuring your entire project.
+
+---
+
+## Conclusion
+
+Symlinks provide a powerful way to organize your project and access files outside of the **'src'** directory in a Create React App project. By following these steps, you can keep your project structure clean and maintainable while still leveraging CRA's zero-config setup.
+
+
