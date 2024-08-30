@@ -1,0 +1,138 @@
+---
+title: "Creating Stopwatch with memo & useCallback hook"
+publishedAt: "2024-08-31"
+summary: "Optimizing React Components with memo and useCallback: A Stopwatch Example"
+---
+
+# Introduction to 'memo' and 'useCallback'
+
+When building React applications, performance optimization is often a key consideration, 
+especially as your app grows in complexity. Two powerful tools in the React ecosystem for boosting performance are the **'memo'** higher-order component and the **'useCallback'** hook. In this tutorial, we'll explore these tools using a practical example: a simple stopwatch component.
+
+---
+
+Before diving into the code, let's understand the role of **'memo'** and **'useCallback'** in optimizing React components.
+
+- **'memo'**: This is a higher-order component (HOC) that wraps a functional component, memoizing its output. React will skip rendering the component if its props haven't changed, preventing unnecessary re-renders.
+- **'useCallback'**: This hooks is used to memoize functions, ensuring that the same function instance is reused between renders unless its dependencies change. This is particularly useful when passing functions as props to memoized components.
+
+# Building the Stopwatch Component
+
+Let's walk through the process of building a stopwatch using **'memo'** and **'useCallback'** to optimize our React component.
+
+## 1. Setting Up the State
+
+First, we set up our state using the **'useState'** hook. We need to track the elapsed time, whether the stopwatch is running, and the start time.
+
+```jsx
+const [time, setTime] = useState(0);
+const [running, setRunning] = useState(false);
+const [startTime, setStartTime] = useState(null);
+const [elapsedTime, setElapsedTime] = useState(0);
+```
+
+## 2. Starting the Stopwatch
+
+To start the stopwatch, we define the **'handleStart'** function. This function calculates the correct start time by subtracting the elapsed time from the current time, ensuring the stopwatch resumes correctly after stopping.
+
+```jsx
+const handleStart = useCallback(() => {
+  if (!running) {
+    setStartTime(Date.now() - elapsedTime); 
+    setRunning(true);
+  }
+}, [running, elapsedTime]);
+```
+
+**Using 'useCallback'**: We wrap **'handleStart'** in **'useCallback'** to memoize it, preventing unnecessary re-creations of the function unless **'running'** or **'elapsedTime'** change. This is especially important if this function is passed down to child components or used in **'useEffect'**.
+
+## 3. Stopping the Stopwatch
+
+The **'handleStop'** function pauses the stopwatch by calculating the elapsed time and updating the **'running'** state to **'false'**.
+
+```jsx
+const handleStop = useCallback(() => {
+  if (running) {
+    setElapsedTime(Date.now() - startTime);
+    setRunning(false);
+  }
+}, [running, startTime]);
+```
+
+**Using 'useCallback'**: Similar to **'handleStart'**, **'handleStop'** is memoized to avoid unnecessary re-creations.
+
+## 4. Resetting the Stopwatch
+
+The **'handleReset'** function resets the stopwatch, clearing the elapsed time and stopping the timer.
+
+```jsx
+const handleReset = useCallback(() => {
+  setElapsedTime(0);
+  setTime(0);
+  setRunning(false);
+  setStartTime(null);
+}, []);
+```
+
+**Using 'useCallback'**: Even though this function is simpler, memoizing it ensures that it doesn't change between renders, which is good practice when optimizing performance.
+
+## 5. Updating the Time
+
+The **'useEffect'** hook updates the displayed time whenever the stopwatch is running. It uses **'setInterval'** to update the **'time'** state in every 10 milliseconds.
+
+```jsx
+useEffect(() => {
+  let timer;
+  if (running) {
+    timer = setInterval(() => {
+      setTime(Date.now() - startTime);
+    }, 10);
+  }
+  return () => clearInterval(timer);
+}, [running, startTime]);
+```
+
+**Dependency Array in 'useEffect'**: The effect is only re-run when **'running'** or **'startTime'** change, ensuring the timer is set up correctly without unnecessary re-renders.
+
+## 6. Rendering the Stopwatch Component
+
+Finally, we render the stopwatch with buttons to start, stop, and reset it.
+
+```jsx
+return (
+  <div className="container">
+    <h1>Stopwatch</h1>
+    <h2>{formatTime(time)}</h2>
+    <div className="buttons">
+      <button id="start" onClick={handleStart}>Start</button>
+      <button id="stop" onClick={handleStop}>Stop</button>
+      <button id="reset" onClick={handleReset}>Reset</button>
+    </div>
+  </div>
+);
+```
+
+# Memoizing the Component with React.memo
+
+To ensure the stopwatch component itself doesn't re-render unnecessarily, we wrap it with **'React.memo'**. This will prevent re-renders unless the props passed to it change.
+
+```jsx
+const Stopwatch = memo(StopwatchComponent);
+```
+
+See full code in this repository: [React Stopwatch](https://github.com/Ashtreus1/react-stopwatch)
+
+# Conclusion
+
+By using **'memo'** and **'useCallback'**, we have optimized our stopwatch component to minimize unnecessary re-renders and function re-creations. These tools are invaluable when working on larger applications where perfomance can be impacted by frequent updates and complex component trees.  
+
+In summary: 
+
+- **'useCallback'** helps us keep our function references stable across renders.
+- **'memo'** prevents unnecessary re-renders of components unless their props change.
+
+---
+
+This combination ensures that our React components are both efficient and easy to maintain. Whether you're building a simple stopwatch or a complex UI, these optimization techniques can help you build faster, more responsive applications. 
+
+
