@@ -94,9 +94,14 @@ export const DATA = {
         name: "Send Email",
         url: "mailto:jameson.gelarman@cvsu.edu.ph",
         icon: Icons.email,
-
         navbar: true,
       },
+      cv: {
+        name: "Curriculum Vitae",
+        url: "/me.pdf",
+        icon: Icons.cv,
+        navbar: true,
+      }
     },
   },
 
@@ -120,7 +125,7 @@ export const DATA = {
       school: "Cavite State University - Main Campus",
       href: "https://www.facebook.com/CaviteStateU",
       degree: "Bachelor of Science in Information Technology",
-      logoUrl: "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/308160829_153730943956076_3589357078346691397_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=dD_JHmMFktwQ7kNvgEO9Bvl&_nc_ht=scontent.fmnl8-3.fna&oh=00_AYBniKqxh7htULugloXg4lXtFnCzDFPvUlfC5mSKBi1cUA&oe=66C8401A",
+      logoUrl: "/cvsu.jpg",
       start: "2023",
       end: "Present",
     },
@@ -136,7 +141,7 @@ export const DATA = {
       school: "Luis Y. Ferrer Jr. Senior Highschool",
       href: "https://www.facebook.com/DepedTayoLYFJSHS342285",
       degree: "ICT Strand Major in Computer Programming",
-      logoUrl: "https://scontent.fmnl8-4.fna.fbcdn.net/v/t39.30808-1/308929281_509176934354416_3416811756145860587_n.jpg?stp=dst-jpg_p200x200&_nc_cat=107&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=5175xkCZXuIQ7kNvgFw30k-&_nc_ht=scontent.fmnl8-4.fna&oh=00_AYDjvE4RR5NprRlggkb5yeltryGJp9xLHECE9xCwu5Nlzw&oe=66C82CA3",
+      logoUrl: "/lyfj.jpg",
       start: "2021",
       end: "2023",
     },
