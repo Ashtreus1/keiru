@@ -171,7 +171,7 @@ export const DATA = {
       ],
       image: "",
       video:
-        "/bin2dec.mp4",
+        "/code2crack.mp4",
     },
     {
       title: "ELITS code2Crack",
