@@ -157,7 +157,7 @@ export const DATA = {
         "Simple binary to decimal and vice versa conversion web application with information card for each conversion. Also, can view history for the conversion made.",
       technologies: [
         "Next.js",
-        "Typescript",
+        "React Typescript",
         "TailwindCSS",
         "Shadcn UI",
         "Animata",
@@ -166,6 +166,32 @@ export const DATA = {
         {
           type: "Website",
           href: "https://bin2dex.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/bin2dec.mp4",
+    },
+    {
+      title: "ELITS code2Crack",
+      href: "https://codetocrack.vercel.app",
+      dates: "Sept 2024",
+      active: true,
+      description:
+        "An game riddle web application that test your problem-solving and critical-thinking skills. Introduced as weekly event of ELITS school organization",
+      technologies: [
+        "React Typescript",
+        "Next.js",
+        "TailwindCSS",
+        "MagicUI",
+        "REST API",
+        "PostgreSQL Railways",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://codetocrack.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
       ],
