@@ -11,7 +11,9 @@ export const DATA = {
   description:
     "Aspiring Software Engineer. I love building things and helping people. Very active on Reddit and Facebook.",
   summary:
-    "Pursuing a [Bachelor's Degree in Information Technology in Cavite State University](#education). Currently, [investing more time to upskill](#projects). Trying to gain more networks and still [actively participating in different contest like hackathons, and stuffs](#hackathons)",
+    `Pursuing a [Bachelor's Degree in Information Technology in Cavite State University](#education). 
+     Currently, [investing more time to upskill](#projects). 
+     Trying to gain more networks and still [actively participating in different contest like hackathons, and stuffs](#hackathons)`,
   avatarUrl: "/me.png",
   skills: [
     {
@@ -31,28 +33,20 @@ export const DATA = {
      icon: "/javascript.png",  
     },
     {
+      name: "TailwindCSS",
+      icon: "/tailwind.png"
+    },
+    {
      name: "Node.js",
      icon: "/nodejs.svg",  
     },
     {
-     name: "Python",
-     icon: "/python.png",  
+      name: "PostgreSQL",
+      icon: "/postgre.png"
     },
     {
-     name: "Java",
-     icon: "/java.png",  
-    },
-    {
-     name: "MySQL",
-     icon: "/mysql.png",  
-    },
-    {
-     name: "PHP",
-     icon: "/php.png",  
-    },
-    {
-     name: "C++",
-     icon: "/c++.png",  
+      name: "Supabase",
+      icon: "/supabase.jpeg"
     },
   ],
   navbar: [
@@ -77,10 +71,10 @@ export const DATA = {
 
         navbar: true,
       },
-      Reddit: {
-        name: "Reddit",
-        url: "https://www.reddit.com/user/Vegetable-Donut1594/",
-        icon: Icons.reddit,
+      Facebook: {
+        name: "Facebook",
+        url: "https://www.facebook.com/jameson.gelarman/",
+        icon: Icons.facebook,
 
         navbar: true,
       },
@@ -112,7 +106,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Software Developer",
-      logoUrl: "",
+      logoUrl: "/innotech.jpg",
       start: "Nov 2023",
       end: "Feb 2024",
       description:
@@ -206,25 +200,54 @@ export const DATA = {
   hackathons: [
     {
       title: "Hackecup 2024",
-      dates: "Jul 5 - Jul 7",
+      dates: "Jul 5 - Jul 7, 2024",
       location: "De la salle University - Main",
       description:
         "Developed a web application for SDG Solution for Quality Education.",
       image:
-        "https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/441874168_776107501400121_8153537651728207681_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=AcCr7LDvSZAQ7kNvgETd-Cp&_nc_ht=scontent.fmnl8-2.fna&oh=00_AYDMWils8Du8ZWANfntIYtHTqPXXx11u7Clp35RPSdQYXw&oe=66C83721",
+        "/hackercup.jpg",
       mlh: "",
-      links: [],
+      links: [
+        {
+          icon: "/hackercup.jpg", 
+          title: "Hackercup 2024",
+          href: "https://github.com/hackercup2024/vibes"
+        }
+      ],
     },
     {
       title: "ELITS Webfest",
-      dates: "May 10 - Jun 10",
+      dates: "May 10 - Jun 10, 2024",
       location: "Cavite State University",
       description:
         "Developed a frontend application for the school organization.",
       image:
-        "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/411281794_758197356345492_5047425886771009210_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=yzPO1w-Ku1AQ7kNvgFQlBov&_nc_ht=scontent.fmnl8-3.fna&oh=00_AYAKxWRXg1YlmSOWvxejqDwKIUiUdlk0u3UPKozZWFjkqA&oe=66C84379",
+        "/elits.jpg",
       mlh: "",
-      links: [],
+      links: [
+        {
+          icon: "/elits.jpg", 
+          title: "ELITS Webfest",
+          href: "https://github.com/innoTech-Solutions/cvsu-elits"
+        }
+      ],
+    },
+    {
+      title: "Meralco IDOL Hackathon",
+      dates: "Nov 18-20, 2024",
+      location: "Meralco Multi-Purpose Hall, MOC, Ortigas Pasig City",
+      description:
+        "Developed a web application for SDG Solution of Energy Efficiency",
+      image:
+        "/meralco.jpeg",
+      mlh: "",
+      links: [
+        {
+          icon: "/meralco.jpeg", 
+          title: "Meralco IDOL Hackathon",
+          href: ""
+        }
+      ],
     },
   ],
 } as const;

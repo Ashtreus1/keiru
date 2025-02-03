@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from 'next/image';
 
 interface Props {
   title: string;
@@ -8,8 +9,8 @@ interface Props {
   dates: string;
   location: string;
   image?: string;
-  links?: readonly {
-    icon: React.ReactNode;
+  links: readonly {
+    icon: string;
     title: string;
     href: string;
   }[];
@@ -28,7 +29,7 @@ export function HackathonCard({
       <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
         <Avatar className="border size-12 m-auto">
           <AvatarImage src={image} alt={title} className="object-contain" />
-          <AvatarFallback>{title[0]}</AvatarFallback>
+          <AvatarFallback>{title}</AvatarFallback>
         </Avatar>
       </div>
       <div className="flex flex-1 flex-col justify-start gap-1">
@@ -50,7 +51,7 @@ export function HackathonCard({
           {links?.map((link, idx) => (
             <Link href={link.href} key={idx}>
               <Badge key={idx} title={link.title} className="flex gap-2">
-                {link.icon}
+                <Image src={link.icon} width={12} height={12} alt={link.title} className="rounded-full"/>
                 {link.title}
               </Badge>
             </Link>
